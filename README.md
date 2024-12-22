@@ -37,6 +37,14 @@ Follow these steps to set up the project for local development:
    ```bash
    npm run start-server
 
+# Screen-Shots
+
+![screencapture-pokemons-pivot-vercel-app-2024-12-22-11_25_14](https://github.com/user-attachments/assets/fabc7dfc-d961-4d71-8b00-7aae13d4fdd0)
+
+
+![screencapture-pokemons-pivot-vercel-app-2024-12-22-11_26_47](https://github.com/user-attachments/assets/c40c2ca1-ab6f-4e8e-b409-c925ba303096)
+
+
 
 ## Author
 

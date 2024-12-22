@@ -46,7 +46,9 @@ export default function RootStateProvider({
       setError(false);
       console.log("SORT BY", sortBy);
       const response = await axios.get(
-        `/?page=${page}&limit=${limit}&query=${query}&sortBy=${sortBy}&type=${typeFilter.value}`
+        `/?page=${page}&limit=${limit}&query=${query.trim()}&sortBy=${sortBy}&type=${
+          typeFilter.value
+        }`
       );
 
       if (!response.data.pokemons.length) return;

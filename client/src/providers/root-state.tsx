@@ -1,8 +1,7 @@
-import { createContext, useContext, useEffect, useRef, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { PokemonDetails } from "../types";
 import axiosInstance from "../utils/axios";
 import { PokemonType, PokemonTypes } from "../data";
-import axios from "axios";
 
 interface RootStateContext {
   isLoading: boolean;
@@ -36,8 +35,6 @@ export default function RootStateProvider({
   const [totalCount, setTotalCount] = useState(0);
   const [typeFilter, setTypeFilter] = useState<PokemonType>(PokemonTypes[0]);
 
-  const cancelTokenSource = useRef(axios.CancelToken.source());
-
   useEffect(() => {
     setPage(1);
     fetchPokemons(1, LIMIT, query);
@@ -48,19 +45,10 @@ export default function RootStateProvider({
       setIsLoading(true);
       setError(false);
 
-      if (cancelTokenSource.current) {
-        cancelTokenSource.current.cancel();
-      }
-
-      cancelTokenSource.current = axios.CancelToken.source();
-
       const response = await axiosInstance.get(
         `/?page=${page}&limit=${limit}&query=${query.trim()}&sortBy=${sortBy}&type=${
           typeFilter.value
-        }`,
-        {
-          cancelToken: cancelTokenSource.current.token,
-        }
+        }`
       );
 
       if (!response.data.pokemons.length) return;

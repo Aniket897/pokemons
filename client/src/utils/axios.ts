@@ -2,5 +2,5 @@ import axios from "axios";
 
 export default axios.create({
   baseURL:
-    "http://localhost:8080/pokemons",
+    "https://yigv2ly72m.execute-api.ap-south-1.amazonaws.com/default/pivot-pokemon",
 });
